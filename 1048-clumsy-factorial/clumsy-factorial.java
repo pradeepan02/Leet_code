@@ -1,30 +1,12 @@
 class Solution {
-  public int clumsy(int n) {
-    Stack<Integer> stac = new Stack<>();
-    stac.push(n--);
-    int i = 0;
-    int ans = 0;
-    while (n>0) {
-      switch (i%4) {
-        case 0:
-          stac.push(stac.pop()*n);
-          break;
-        case 1:
-          stac.push(stac.pop()/n);
-          break;
-        case 2:
-          stac.push(n);
-          break;
-        case 3:
-          stac.push(-n);
-          break;
-      }
-      i++;
-      n--;
+    public int clumsy(int n) {
+        if (n == 1) return 1;
+        if (n == 2) return 2;
+        if (n == 3) return 6;
+        if (n == 4) return 7;
+
+        if (n % 4 == 0) return n + 1;
+        if (n % 4 == 1 || n % 4 == 2) return n + 2;
+        return n - 1;
     }
-    while (!stac.isEmpty()) {
-      ans+=stac.pop();
-    }
-    return ans;
-  }
 }
